@@ -12,7 +12,7 @@ html{
     height: 100vh;
 }
 
-.page1{
+#page1{
     height: 50vh;
     display: flex;
     justify-content: center;
@@ -34,4 +34,14 @@ h1{
 .blueBtn:hover{
     color: white;
     background-color:rgb(99, 185, 246) ;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#imgLogo{
+    width: 100px;
+    position: absolute;
 }

@@ -7,10 +7,11 @@ var accessToken;
 var logInBtn = document.getElementById("logInBtn");
 const redirectUri = 'http://localhost:8383/index.html';
 
-
+window.addEventListener("load", getCodeAfterAuthentication);
 logInBtn.addEventListener("click", authenticateSpotify);
 let code;
 async function authenticateSpotify() {
+  console.log("Authenticating");
   // Your existing code to initiate the Spotify authentication process goes here.
   // This includes generating codeVerifier, codeChallenge, and setting up the URL for Spotify authorization.
   const generateRandomString = (length) => {
@@ -54,19 +55,22 @@ async function authenticateSpotify() {
   authUrl.search = new URLSearchParams(params).toString();
   window.location.href = authUrl.toString();  
   // Once the user completes the Spotify authentication, they will be redirected back to your app with the 'code' in the URL.
+}
+
+
+async function getCodeAfterAuthentication() {
   const urlParams = new URLSearchParams(window.location.search);
   code = urlParams.get('code');
-
+  console.log(code);
   if (code) {
     // If 'code' is available in the URL, use it to get the access token.
+    document.getElementById("page1").classList.add("is-hidden");
+    document.getElementById("page2").classList.remove("is-hidden");
     await getToken(code);
   } else {
     console.log("User needs to complete Spotify authentication.");
   }
 }
-
-
-
 
 const getToken = async code => {
   // stored in the previous step
@@ -95,6 +99,7 @@ const getToken = async code => {
     const response = await body.json();
     console.log('Access Token:', response.access_token);
     localStorage.setItem('access_token', response.access_token);
+
   } catch (error) {
     console.error('Error in getToken:', error);
   }
