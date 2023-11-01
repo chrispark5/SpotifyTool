@@ -99,6 +99,7 @@ const getToken = async code => {
     const response = await body.json();
     console.log('Access Token:', response.access_token);
     localStorage.setItem('access_token', response.access_token);
+    getUserData();
 
   } catch (error) {
     console.error('Error in getToken:', error);
@@ -106,7 +107,7 @@ const getToken = async code => {
 }
 
 
-
+var displayName = document.getElementById("displayName");
 const apiEndpoint = 'https://api.spotify.com/v1/me'; // This is an example endpoint to get the user's profile.
 function getUserData(){
 // Make the API call
@@ -125,6 +126,8 @@ fetch(apiEndpoint, {
   .then(data => {
     // Handle the response data here
     console.log('User Profile Data:', data);
+    displayName.innerHTML = "Welcome " + data.display_name;
+    
   })
   .catch(error => {
     console.log(localStorage.access_token)

@@ -45,3 +45,10 @@ h1{
     width: 100px;
     position: absolute;
 }
+.sub{
+    margin: 1vh;
+}
+input{
+    border-radius: 10px;
+    padding: 10px;
+}
