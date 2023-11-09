@@ -1,3 +1,4 @@
+//spotipy for python Spotify API
 const axios = window.axios;
 
 var clientId = "5db8362bcba44d2aaf13fb20f45dec30";
@@ -6,7 +7,7 @@ var accessToken;
 
 var logInBtn = document.getElementById("logInBtn");
 const redirectUri = 'http://localhost:8383/index.html';
-
+var SongDetails = document.getElementById("SongDetails");
 window.addEventListener("load", getCodeAfterAuthentication);
 logInBtn.addEventListener("click", authenticateSpotify);
 let code;
@@ -99,7 +100,7 @@ const getToken = async code => {
     const response = await body.json();
     console.log('Access Token:', response.access_token);
     localStorage.setItem('access_token', response.access_token);
-    getUserData();
+    fetchProfile();
 
   } catch (error) {
     console.error('Error in getToken:', error);
@@ -109,31 +110,58 @@ const getToken = async code => {
 
 var displayName = document.getElementById("displayName");
 const apiEndpoint = 'https://api.spotify.com/v1/me'; // This is an example endpoint to get the user's profile.
-function getUserData(){
-// Make the API call
-fetch(apiEndpoint, {
-  method: 'GET',
-  headers: {
-    'Authorization': `Bearer ${localStorage.access_token}`,
-  },
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('HTTP status ' + response.status);
-    }
-    return response.json();
-  })
-  .then(data => {
-    // Handle the response data here
-    console.log('User Profile Data:', data);
-    displayName.innerHTML = "Welcome " + data.display_name;
-    
-  })
-  .catch(error => {
-    console.log(localStorage.access_token)
-    console.error('Error:', error);
 
+
+async function fetchProfile() {
+  const result = await fetch("https://api.spotify.com/v1/me", {
+      method: "GET", headers: { Authorization: `Bearer ${localStorage.access_token}` }
   });
+  const profile = await result.json();
+  console.log(profile);
+  displayName.innerHTML = "Welcome " + profile.display_name;
+  localStorage.userId = profile.id;
+  if (profile.images[0]) {
+    const profileImage = new Image(200, 200);
+    profileImage.src = profile.images[0].url;
+    document.getElementById("imgUrl").src = profile.images[0].url;
+} 
 }
 
 
+
+
+
+
+function displaySongData(){
+  SongDetails.innerHTML = ""
+}
+
+
+
+
+// function getUserData(){
+//   fetch(apiEndpoint, {
+//     method: 'GET',
+//     headers: {
+//       'Authorization': `Bearer ${localStorage.access_token}`,
+//     },
+//   })
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error('HTTP status ' + response.status);
+//       }
+//       return response.json();
+//     })
+//     .then(data => {
+//       // Handle the response data here
+//       console.log('User Profile Data:', data);
+//       displayName.innerHTML = "Welcome " + data.display_name;
+//       localStorage.userId = data.id;
+      
+//     })
+//     .catch(error => {
+//       console.log(localStorage.access_token)
+//       console.error('Error:', error);
+  
+//     });
+//   }

@@ -8,8 +8,9 @@
 html{
     background-image: linear-gradient(180deg, rgb(99, 185, 246), rgb(255, 255, 255)  );
 }
-.container{
+.container1{
     height: 100vh;
+    max-width: 1440px;
 }
 
 #page1{
@@ -42,8 +43,9 @@ h1{
     flex-direction: column;
 }
 #imgLogo{
-    width: 100px;
+    height: 100%;
     position: absolute;
+
 }
 .sub{
     margin: 1vh;
@@ -51,4 +53,22 @@ h1{
 input{
     border-radius: 10px;
     padding: 10px;
+}
+.header{
+    width: 100%;
+    height: 5vh;
+    margin: auto;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-between;
+}
+
+.navbar a{
+    margin: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
 }

@@ -13,17 +13,21 @@
     referrerpolicy="no-referrer"
   ></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://kit.fontawesome.com/2ddf159105.js" crossorigin="anonymous"></script>
 
 
   <link rel="stylesheet" href="mystyle.css">
   
 </head>
 <body>
-  <a href="index.html">
-    <img id ="imgLogo"src="assets/logo.avif" alt="">
-  </a>
+  
  
-  <div class="container">
+  <div class="container1">
+    <div class="navbar">
+          <!-- <img id ="imgLogo"src="assets/logo.avif" alt=""> -->
+          <a href="index.html">Home</a>
+          <a id ="shoppingCart"href="shoppingCart.html">Shopping Cart <span><i class="fa-solid fa-cart-shopping" style="color: #8badea;"></i></span></a>
+    </div>
     <div class="title">
       <h1>Spotify Playlist Creator
       </h1>
@@ -43,6 +47,13 @@
         <div class="sub">
           <input type="text" placeholder="Enter artist and song name">
           <button class="button is-rounded">Add song</button>
+        </div>
+        <div>
+          <img id="imgUrl"></img>
+        </div>
+
+        <div class="sub">
+            <h1 id="SongDetails"></h1>
         </div>
        
         
