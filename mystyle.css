@@ -41,6 +41,7 @@ h1{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 5vw;
 }
 #imgLogo{
     height: 100%;
@@ -72,3 +73,26 @@ input{
     margin-left: 25px;
     margin-right: 25px;
 }
+
+#songDisplay{
+    margin: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.grid {
+    display: grid;
+    gap: 20vh;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+
+  .navbar-elem{
+    width: 33vw;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .grid button {
+    display:none;
+  }

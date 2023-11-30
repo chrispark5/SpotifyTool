@@ -14,61 +14,79 @@
   ></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://kit.fontawesome.com/2ddf159105.js" crossorigin="anonymous"></script>
-
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link rel="stylesheet" href="mystyle.css">
-  
 </head>
 <body>
-  
- 
   <div class="container1">
     <div class="navbar">
           <!-- <img id ="imgLogo"src="assets/logo.avif" alt=""> -->
-          <a href="index.html">Home</a>
-          <a id ="shoppingCart"href="shoppingCart.html">Shopping Cart <span><i class="fa-solid fa-cart-shopping" style="color: #8badea;"></i></span></a>
+          <div class="navbar-elem">
+            <a href="index.html">Home</a>
+          </div>
+          
+          <div class="navbar-elem title">
+            <h1 style="color: #8badea;">Spotify Playlist Creator
+            </h1>
+          </div>
+          <div class="navbar-elem">
+            <a id ="shoppingCart" onclick="cart()">Shopping Cart <span><i class="fa-solid fa-cart-shopping" style="color: #8badea;"></i></span></a>
+          </div>
     </div>
-    <div class="title">
-      <h1>Spotify Playlist Creator
-      </h1>
-    </div>
+    
 
     <div id="page1">
         <button class="button blueBtn is-rounded" id="logInBtn"><span>Log in to Spotify to begin</span> </button>
     </div>
+
+
+
     <div id = "page2" class="is-hidden">
       <div class="main">
-        <p id="displayName"></p>
-        <h1>Create playlists, add songs, and look up information about artists</h1>
+        <h1>Step 1. Create a playlist or choose an existing one</h1>
         <div class="sub">
-          <input type="text" placeholder="Enter playlist name">
-          <button class="button is-rounded">Add Playlist</button>
+            <input id = "playlistName"type="text" placeholder="Enter playlist name">
+            <button id="playlistBtn"class="button is-rounded" onclick="createPlaylist()">Add Playlist</button>
         </div>
-        <div class="sub">
-          <input type="text" placeholder="Enter artist and song name">
-          <button class="button is-rounded">Add song</button>
+        <div class="select is-rounded" style="margin: 5vh;">
+          <select>
+            <option>Select playlist</option>
+          </select>
         </div>
-        <div>
-          <img id="imgUrl"></img>
-        </div>
-
-        <div class="sub">
-            <h1 id="SongDetails"></h1>
-        </div>
-       
-        
+        <button class="button is-rounded" onclick="page3()">Next step</button>
       </div>
-        
-
     </div>
 
 
-    <div class="inputBox">
+    <div id="page3" class="is-hidden">
+      <div style="display: flex;justify-content: center;">
+        <input id = "searchItem"type="text" placeholder="Enter artist and song name">
+        <button id = "searchBtn"class="button is-rounded" onclick="searchForItem()">Search</button>
+      </div>
+      <div class="sub">
+            <div class="grid">
+              <div><img id = "item1"src="" alt=""> <p id ="desc1"></p><button class="button">Add to Cart</button></div>
+              <div><img id = "item2"src="" alt=""> <p id ="desc2"></p><button class="button">Add to Cart</button></div>
+              <div><img id = "item3"src="" alt=""> <p id ="desc3"></p><button class="button">Add to Cart</button></div>
+              <div><img id = "item4"src="" alt=""> <p id ="desc4"></p><button class="button">Add to Cart</button></div>
+              <div><img id = "item5"src="" alt=""> <p id ="desc5"></p><button class="button">Add to Cart</button></div>
+              <div><img id = "item6"src="" alt=""> <p id ="desc6"></p><button class="button">Add to Cart</button></div>
+              <div><img id = "item7"src="" alt=""> <p id ="desc7"></p><button class="button">Add to Cart</button></div>
+              <div><img id = "item8"src="" alt=""> <p id ="desc8"></p><button class="button">Add to Cart</button></div>
+              <div><img id = "item9"src="" alt=""> <p id ="desc9"></p><button class="button">Add to Cart</button></div>
+            </div>
 
+
+      </div>
+
+
+    </div>
+    
+    <div id = "cart" class="checkout is-hidden">
+        <button class="button is-rounded" onclick="checkout()">Checkout </button>
     </div>
 
   </div>
-    
   <script src="Spotify.js"></script>
 </body>
 </html>
