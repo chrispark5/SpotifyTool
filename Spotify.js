@@ -7,7 +7,7 @@ var accessToken;
 
 var logInBtn = document.getElementById("logInBtn");
 // const redirectUri = 'http://localhost:8383/index.html';
-const redirectUri = 'https://chrispark5.github.io/SpotifyTool/'
+const redirectUri = 'https://chrispark5.github.io/SpotifyTool'
 var SongDetails = document.getElementById("SongDetails");
 window.addEventListener("load", getCodeAfterAuthentication);
 logInBtn.addEventListener("click", authenticateSpotify);
