@@ -6,8 +6,8 @@ var clientSecret = "7070638e695246fd9ac68c95e61cdcb6";
 var accessToken;
 
 var logInBtn = document.getElementById("logInBtn");
-// const redirectUri = 'http://localhost:8383/index.html';
-const redirectUri = 'https://chrispark5.github.io/SpotifyTool'
+const redirectUri = 'http://localhost:8383/index.html';
+// const redirectUri = 'https://chrispark5.github.io/SpotifyTool'
 var SongDetails = document.getElementById("SongDetails");
 window.addEventListener("load", getCodeAfterAuthentication);
 logInBtn.addEventListener("click", authenticateSpotify);
@@ -301,18 +301,22 @@ function cart(){
 
 let checkoutList = []
 const buttons = document.querySelectorAll('.grid .button');
-function addSongToCart(event) {
+async function addSongToCart(event) {
   event.target.disabled = true;
   event.target.innerHTML = "Added to cart"
   const paragraphId = event.target.previousElementSibling.id;
   let song = paragraphId.charAt(paragraphId.length-1);
   var songID = songArr[parseInt(song)-1];
-
   checkoutList.push(songID);
   var checkoutItem = document.createElement("p");
-  checkoutItem.innerHTML = songID;
+  const result = await fetch(`https://api.spotify.com/v1/tracks/${songID}`, {
+    method: "GET",
+    headers: { Authorization: `Bearer ${localStorage.access_token}` },
+  });
+  var song_json = await result.json();
+  console.log(song_json);
+  checkoutItem.innerHTML = song_json.name;
   $("#cart").append(checkoutItem);
-
 
   checkoutString += "spotify:track:" + songID + ",";
 }
