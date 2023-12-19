@@ -1,8 +1,7 @@
 //spotipy for python Spotify API
 const axios = window.axios;
 
-var clientId = "5db8362bcba44d2aaf13fb20f45dec30";
-var clientSecret = "7070638e695246fd9ac68c95e61cdcb6";
+
 var accessToken;
 
 var logInBtn = document.getElementById("logInBtn");
